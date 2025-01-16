@@ -1,0 +1,6 @@
+__pycache__
+venv
+src/build
+src/dist
+src/FileOrganizer.spec
+test-folders/
