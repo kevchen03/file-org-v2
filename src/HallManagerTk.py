@@ -4,15 +4,6 @@ from copy import deepcopy
 from validator import validate_unique, validate_chars
 import save_handler as saves
 
-tmpdir = tempfile.gettempdir()
-save_folder = f"{tmpdir}/FileOrganizerUserInfo"
-if not os.path.exists(save_folder):
-    os.makedirs(save_folder)
-save_file = f"{save_folder}/save_info.json"
-if not os.path.exists(save_file):
-    with open(save_file, 'w', encoding='utf-8') as saves:
-        json.dump(dict(), saves, ensure_ascii=False, indent=4)
-
 class HallManager():
     '''
     This class provides a tk.Toplevel widget allowing users to

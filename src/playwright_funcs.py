@@ -6,9 +6,15 @@ mslink = "https://forms.office.com/Pages/DesignPageV2.aspx?" + \
          "kCGPU8yweOjemYNbVVriiJHgFdevpzMcOZUNDMwWVlPTkdYOD" + \
          "A1RFRUMUs4VkFTRTgwSSQlQCN0PWcu&analysis=true"
 cookies = None
-new_navigation = True
 
 def check_connection():
+    '''
+    This function checks for a network connection.
+
+    Returns:
+        True if a successful network connection is
+        established, False otherwise.
+    '''
     conn = httplib.HTTPSConnection("8.8.8.8", timeout=5)
     try:
         conn.request("HEAD", "/")
@@ -41,10 +47,39 @@ def get_login():
         return None
 
 def navigate_to_results(page):
+    '''
+    This function navigates the page to the
+    Microsoft Forms result page.
+
+    Parameters:
+        - page: playwright.sync_api.Page
+            The page used to navigate to the results.
+    '''
     page.goto(mslink)
     page.locator("//html/body/div[2]/div/div[2]/div/div[3]/div[2]/div[2]/div/div[1]/div/div[2]/div/div/div/div[2]/div/div/div/button").click()
 
 def get_survey(page, ssid, save_path, *, new_navigation = False, prev_ssids = [3]):
+    '''
+    This function searches up a Scheduling Survey
+    via the provided Scheduling Survey ID (ssid),
+    and saves the page as a PDF at the path given.
+
+    Parameters:
+        - page: playwright.sync_api.Page
+            The page which is navigated to the
+            results page of the MS Form.
+        - ssid: int
+            The Scheduling Survey ID to look up.
+        - save_path: str
+            The path to save the PDF to.
+        - new_navigation: bool
+            True if this is the first search
+            completed on the passed page, False
+            otherwise.
+        - prev_ssids: List[int]
+            The list of ssids searched up. Defaults
+            to the initial search ID, which is 3.
+    '''
     if new_navigation:
         page.fill(f"input[value='{prev_ssids[0]}']", f"{ssid}")
     else:

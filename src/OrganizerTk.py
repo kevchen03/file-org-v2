@@ -415,6 +415,3 @@ class Organizer():
 
 if __name__ == "__main__":
     Organizer().start()
-
-# TODO: TEST THAT LOCAL STORAGE ACTUALLY WORKS - DOES _load_halls() ACTUALLY PULL LATEST VERSION, OR JUST FIRST?
-# TODO: COMPILE!
