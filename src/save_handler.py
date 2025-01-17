@@ -10,9 +10,17 @@ if not os.path.exists(save_file):
         json.dump(dict(), saves, ensure_ascii=False, indent=4)
 
 def get_saves():
-    with open(save_file, 'w', encoding='utf-8') as in_file:
+    '''
+    This function retrieves the user's local data
+    as a dictionary.
+    '''
+    with open(save_file, 'r', encoding='utf-8') as in_file:
         return json.load(in_file)
 
 def post_saves(save_data):
-    with open(save_file, 'r', encoding='utf-8') as out_file:
+    '''
+    This function saves the user's settings to
+    the local storage.
+    '''
+    with open(save_file, 'w', encoding='utf-8') as out_file:
         json.dump(save_data, out_file, ensure_ascii=False, indent=4)
