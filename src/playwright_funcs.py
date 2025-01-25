@@ -56,7 +56,7 @@ def navigate_to_results(page):
             The page used to navigate to the results.
     '''
     page.goto(mslink)
-    page.locator("//html/body/div[2]/div/div[2]/div/div[3]/div[2]/div[2]/div/div[1]/div/div[2]/div/div/div/div[2]/div/div/div/button").click()
+    page.locator('button').filter(has_text="Check individual results").click()
 
 def get_survey(page, ssid, save_path, *, new_navigation = False, prev_ssids = [3]):
     '''
