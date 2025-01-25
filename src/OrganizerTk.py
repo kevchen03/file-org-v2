@@ -107,7 +107,7 @@ class Organizer():
             and your output folder (where your files will go).
             Your DocuSign PDFs must be named in the format:
 
-            (Name) (Survey Number) <(Dining Hall).pdf
+            (Name) (Survey Number) (Dining Hall).pdf
 
             Ensure that you have spaces between the three
             components, as they are required in this version!
@@ -317,7 +317,7 @@ class Organizer():
             pwfuncs.navigate_to_results(p)
             for index, filename in enumerate(pdf_files, start=1):
                 if not pwfuncs.check_connection():
-                    self.status.config("Connection Lost! Aborting...", bg='red')
+                    self.status.config(text="Connection Lost! Aborting...", bg='red')
                     self.window.update()
                     break
                 sort_details = self._get_sort_details(filename, keys)
